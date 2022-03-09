@@ -1,5 +1,5 @@
 import json
-from public import con_pool
+from model.public import con_pool
 with open("data/taipei-attractions.json",mode="r",encoding="utf-8") as file:
     file=json.load(file)
     all_data=file["result"]["results"]
