@@ -101,4 +101,4 @@ document.querySelector("#search_attrs").addEventListener("keyup", function (even
       document.getElementById("Button").click();
       event.target.value = "";
     }
-  });
+});
