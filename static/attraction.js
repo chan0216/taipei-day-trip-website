@@ -95,9 +95,7 @@ function selectattrs() {
   // console.log("selectattrs");
   attraction();
 }
-document
-  .querySelector("#search_attrs")
-  .addEventListener("keyup", function (event) {
+document.querySelector("#search_attrs").addEventListener("keyup", function (event) {
     event.preventDefault();
     if (event.keyCode === 13) {
       document.getElementById("Button").click();
