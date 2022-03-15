@@ -10,7 +10,7 @@ body {
   font-family: "Noto Sans TC";
 }
 
-body nav {
+/* body nav {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -44,7 +44,7 @@ body nav .container {
 }
 
 body nav .container .logo {
-  width: 150px;
+  width: 160px;
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
@@ -75,7 +75,7 @@ body nav .container .menu .item2 {
 .text {
   text-decoration: none;
   color: #666666;
-}
+} */
 
 .section {
   width: 100%;
@@ -249,6 +249,7 @@ img {
 }
 
 .div {
+  cursor: pointer;
   height: 242px;
   border: 1px solid #e8e8e8;
   border-radius: 5px;
