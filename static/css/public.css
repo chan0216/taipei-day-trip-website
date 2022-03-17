@@ -25,6 +25,7 @@ body nav {
   top: 0;
   z-index: 5;
   background-color: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 body nav .container {
