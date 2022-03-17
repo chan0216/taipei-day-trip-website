@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/public.css" />
+
+    <title>台北一日遊</title>
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <p class="logo">台北一日遊</p>
+
+        <div class="menu">
+          <div class="item1">
+            <p><a class="text" href="#">預定行程</a></p>
+          </div>
+          <div class="item2">
+            <p><a class="text" href="#">登入/註冊</a></p>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="section">
+      <img src="../static/img/welcome.png" alt="" />
+      <div class="slogan">
+        <div class="slogantext">
+          <div>
+            <h1>輕鬆享受台北一日悠閒</h1>
+            <p>探索每個角落，體驗城市的深度旅遊行程</p>
+          </div>
+          <div class="search">
+            <input
+              class="searchtext"
+              type="text"
+              name=""
+              id="search_attrs"
+              placeholder="輸入景點名稱查詢"
+            />
+            <div>
+              <input
+                class="btn"
+                type="image"
+                id="Button"
+                value="查詢"
+                src="../static/img/icon_search.png"
+                onclick="selectattrs() "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <div class="gridbox"></div>
+    </main>
+
+    <footer class="footer">
+      <p>COPYRIGHT © 2021 台北一日遊</p>
+    </footer>
+  </body>
+  <script src="../static/js/index.js" type="text/javascript"></script>
+</html>

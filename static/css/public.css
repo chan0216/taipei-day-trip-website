@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans TC";
+}
+
+body nav {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+body nav .container {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 1200px;
+  height: 34px;
+  margin: 10px 0;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+body nav .container .logo {
+  width: 160px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  color: #448899;
+}
+
+body nav .container .menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 175px;
+  height: 34px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+body nav .container .menu .item1 {
+  padding: 10px;
+  width: 84px;
+}
+
+body nav .container .menu .item2 {
+  width: 91px;
+  padding: 10px;
+}
+
+.text {
+  text-decoration: none;
+  color: #666666;
+}
