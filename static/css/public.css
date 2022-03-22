@@ -44,7 +44,7 @@ body nav .container {
   justify-content: space-between;
 }
 
-body nav .container .logo {
+body nav .container .logo a {
   width: 160px;
   font-style: normal;
   font-weight: bold;
@@ -63,17 +63,115 @@ body nav .container .menu {
   align-items: center;
 }
 
-body nav .container .menu .item1 {
+body nav .container .menu .reservediv {
   padding: 10px;
   width: 84px;
 }
 
-body nav .container .menu .item2 {
+body nav .container .menu .memberdiv {
   width: 91px;
   padding: 10px;
 }
 
-.text {
-  text-decoration: none;
+a {
   color: #666666;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.loginPopup,
+.signupPopup {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  height: 100%;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  z-index: 10;
+  display: none;
+}
+
+.loginform {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 80px);
+  z-index: 5;
+  width: 340px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  height: 275px;
+}
+.signupForm {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 80px);
+  z-index: 5;
+  width: 340px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  height: 332px;
+}
+
+.decorator-bar {
+  border-radius: 6px 6px 0 0;
+  height: 10px;
+  background: linear-gradient(270deg, #337788 0%, #66aabb 100%);
+}
+.user-h3 {
+  font-size: 24px;
+  line-height: 24px;
+  color: #666666;
+  margin: 15px;
+  width: 310px;
+}
+
+.user-input {
+  margin: 0px 15px 10px 15px;
+  height: 47px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  outline: none;
+  width: 310px;
+  font-size: 16px;
+  padding: 15px;
+  color: #666666;
+  font-family: "Noto Sans TC";
+}
+
+.user-btn {
+  border-radius: 5px;
+  margin: 0px 15px 10px 15px;
+  height: 47px;
+  background: #448899;
+  font-size: 19px;
+  line-height: 16px;
+  width: 310px;
+  color: #ffffff;
+  border: 1px solid #cccccc;
+  outline: none;
+  cursor: pointer;
+}
+
+.CloseButton {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  position: absolute;
+  right: 17px;
+  cursor: pointer;
+  top: 27px;
+}
+.signup-Popuplogin {
+  margin: 0px 15px 10px 15px;
+}
+.hint {
+  color: #448899;
+  margin-bottom: 5px;
+}
+.warming {
+  margin-bottom: 5px;
+  color: rgb(235, 70, 70);
+}
+.signin {
+  display: none;
 }

@@ -6,6 +6,7 @@ const fetchAttraction = async () => {
   createElement(attra);
 };
 function createElement(attra) {
+  //創建頁面
   let rightdiv = document.querySelector(".rightdiv");
   let name = document.createElement("h3");
   let category_mrt = document.createElement("p");
@@ -33,6 +34,7 @@ function createElement(attra) {
     let index_span = document.createElement("span");
     index_span.classList.add("dot");
     img.src = imgurl;
+    img.classList.add("attras-imgs");
     imgdiv.append(img);
     silders.append(index_span);
   });
@@ -40,20 +42,24 @@ function createElement(attra) {
 
 fetchAttraction().then(() => {
   let current_index = 0;
-  const imgs = document.querySelectorAll("img");
+  const imgs = document.querySelectorAll(".attras-imgs");
   const dots = document.querySelectorAll(".dot");
   let imgCount = imgs.length;
   function showattras() {
+    //當前index超過照片總數時歸0
     if (current_index > imgCount - 1) {
       current_index = 0;
     }
+    //當前index小於0時，變成最後一頁(照片總數-1)
     if (current_index < 0) {
       current_index = imgCount - 1;
     }
+    //所有照片都先display none
     for (i = 0; i < imgs.length; i++) {
       dots[i].classList.remove("active");
       imgs[i].style.display = "none";
     }
+    //顯示當前頁面
     dots[current_index].classList.add("active");
     imgs[current_index].style.display = "block";
   }

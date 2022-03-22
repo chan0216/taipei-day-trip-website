@@ -10,73 +10,6 @@ body {
   font-family: "Noto Sans TC";
 }
 
-/* body nav {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  background-color: #ffffff;
-}
-
-body nav .container {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 1200px;
-  height: 34px;
-  margin: 10px 0;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-body nav .container .logo {
-  width: 160px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 30px;
-  color: #448899;
-}
-
-body nav .container .menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 175px;
-  height: 34px;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-body nav .container .menu .item1 {
-  padding: 10px;
-  width: 84px;
-}
-
-body nav .container .menu .item2 {
-  width: 91px;
-  padding: 10px;
-}
-
-.text {
-  text-decoration: none;
-  color: #666666;
-} */
-
 .section {
   width: 100%;
   background: linear-gradient(135deg, #aaddee 0%, #66aabb 100%);
@@ -151,6 +84,8 @@ body nav .container .menu .item2 {
   border-radius: 5px 0 0 5px;
   color: #757575;
   font-weight: bold;
+  padding: 15px;
+  /* padding-left: 15px; */
 }
 
 .section .slogan .search div {
@@ -191,36 +126,9 @@ body nav .container .menu .item2 {
   font-size: 16px;
 }
 
-input::-webkit-input-placeholder {
-  font-size: 16px;
-  line-height: 13px;
+.search > input::placeholder {
   color: #757575;
   font-weight: bold;
-  padding: 15px;
-}
-
-input:-ms-input-placeholder {
-  font-size: 16px;
-  line-height: 13px;
-  color: #757575;
-  font-weight: bold;
-  padding: 15px;
-}
-
-input::-ms-input-placeholder {
-  font-size: 16px;
-  line-height: 13px;
-  color: #757575;
-  font-weight: bold;
-  padding: 15px;
-}
-
-input::placeholder {
-  font-size: 16px;
-  line-height: 13px;
-  color: #757575;
-  font-weight: bold;
-  padding: 15px;
 }
 
 .gridbox {
