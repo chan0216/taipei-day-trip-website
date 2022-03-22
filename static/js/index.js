@@ -43,12 +43,9 @@ class Createelement {
 }
 //fetch 景點
 function fetchattras() {
-  let apiurl;
-  if (keyword === "") {
-    apiurl = `/api/attractions?page=${page}`;
-  } else {
-    apiurl = `/api/attractions?page=${page}&keyword=${keyword}`;
-  }
+  let apiurl = keyword
+    ? `/api/attractions?page=${page}&keyword=${keyword}`
+    : `/api/attractions?page=${page}`;
   if (isfetching === false) {
     isfetching = true;
     fetch(apiurl)
@@ -56,7 +53,13 @@ function fetchattras() {
         return response.json();
       })
       .then((data) => {
-        if (data["data"]) {
+        //提早return就不用else
+        if (data["error"]) {
+          gridbox.innerHTML = `沒有符合${keyword}的景點`;
+          isfetching = false;
+          return;
+        }
+        if (page != null) {
           let attras = data.data;
           for (let attra of attras) {
             let showpage = new Createelement(
@@ -68,18 +71,13 @@ function fetchattras() {
             );
             showpage.create();
           }
-          if (page != null) {
-            isfetching = false;
-            page = data["nextPage"];
-            //還有頁面，重新打開觀察
-            observer.observe(footer);
-          } else {
-            observer.unobserve(footer);
-          }
+          //還有頁面，重新打開觀察
+          observer.observe(footer);
         } else {
-          gridbox.innerHTML = `沒有符合${keyword}的景點`;
-          isfetching = false;
+          observer.unobserve(footer);
         }
+        isfetching = false;
+        page = data["nextPage"];
       })
       .catch((e) => {
         isfetching = false;
@@ -120,5 +118,5 @@ searchinput.addEventListener("keyup", function (event) {
   }
 });
 function selectid(checkid) {
-  window.location.replace(`/attraction/${checkid}`);
+  window.location.href = `/attraction/${checkid}`;
 }

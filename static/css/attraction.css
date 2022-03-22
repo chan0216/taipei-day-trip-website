@@ -60,11 +60,11 @@ input[type="radio"][name="selecttime"] {
 }
 
 input[type="radio"][name="selecttime"]:checked:after {
+  content: "";
   width: 18px;
   height: 18px;
   border-radius: 15px;
   background-color: #448899;
-  content: "";
   display: inline-block;
   border: 2px solid white;
 }
@@ -73,7 +73,6 @@ button {
   cursor: pointer;
   font-size: 19px;
   line-height: 16px;
-  padding: 10px 20px;
   border: none;
   color: white;
   width: 154px;
@@ -81,11 +80,7 @@ button {
   background: #448899;
   border-radius: 5px;
 }
-/* .hr1 {
-  background-color: #e8e8e8;
-  height: 1px;
-  border: none;
-} */
+
 .hr2 {
   background-color: #e8e8e8;
   height: 1px;
@@ -108,7 +103,7 @@ a {
   height: 32px;
   margin-top: 20px;
 }
-img {
+.attras-imgs {
   display: none;
   width: 100%;
   height: 100%;
@@ -120,14 +115,16 @@ img {
   position: absolute;
   cursor: pointer;
   top: 50%;
-  transform: translate(0, -50%);
+  transform: translate(10px, -50%);
+  opacity: 0.7;
 }
 .next {
   right: 0;
   position: absolute;
   cursor: pointer;
   top: 50%;
-  transform: translate(0, -50%);
+  transform: translate(-10px, -50%);
+  opacity: 0.7;
 }
 .silders {
   text-align: center;
@@ -194,7 +191,7 @@ img {
     width: 500px;
   }
 
-  img {
+  .attras-imgs {
     aspect-ratio: 5/4;
     object-fit: cover;
     margin: 0 auto;
@@ -212,7 +209,7 @@ img {
     width: 100%;
     height: auto;
   }
-  img {
+  .attras-imgs {
     aspect-ratio: 5/4;
     object-fit: cover;
   }
@@ -236,7 +233,7 @@ img {
     display: flex;
     justify-content: center;
   }
-  img {
+  .attras-imgs {
     width: 466px;
     height: 350px;
   }
