@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/public.css" />
+    <link rel="stylesheet" href="../static/css/booking.css" />
+    <title>台北一日遊</title>
+  </head>
+  <body>
+    <script src="../static/js/header.js" type="text/javascript"></script>
+    <div class="welcomediv"></div>
+    <div class="notplan">目前沒有任何待預定的行程</div>
+    <main>
+      <div class="section">
+        <div class="section__imgdiv">
+          <div></div>
+        </div>
+        <div class="booking">
+          <input
+            class="delete__btn"
+            type="image"
+            src="../static/img/icon_delete.png"
+            onclick="deleteSchedule()"
+          />
+          <p class="booking__logo">台北一日遊：</p>
+          <div class="booking__container">
+            <div class="container__date"><span>日期：</span></div>
+            <div class="container__time"><span>時間：</span></div>
+            <div class="container__cost"><span>費用：</span></div>
+            <div class="container__place"><span> 地點：</span></div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <form class="contact_form">
+        <p>您的聯絡資訊</p>
+        <label for="name">聯絡姓名：</label>
+        <input type="text" id="name" />
+        <br />
+        <label for="email">連絡信箱：</label>
+        <input type="email" id="email" />
+        <br />
+        <label for="phone">手機號碼：</label>
+        <input type="number" id="phone" />
+        <p>
+          請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。
+        </p>
+      </form>
+      <hr />
+      <form class="pay_form">
+        <p>信用卡付款資訊</p>
+        <label for="cardnumber">卡片號碼：</label>
+        <input
+          type="number"
+          id="cardnumber"
+          placeholder="**** **** **** ****"
+          maxlength="16"
+        />
+        <br />
+        <label for="time">過期時間：</label>
+        <input type="text" placeholder="MM/YY" id="time " maxlength="4" />
+        <br />
+        <label for="password">驗證密碼：</label>
+        <input type="text" id="password" placeholder="CVV" />
+      </form>
+      <hr class="h3" />
+      <div class="confirm">
+        <p class="confirm__total">總價：</p>
+        <button type="button" class="booking_btn">確認訂購並付款</button>
+      </div>
+    </main>
+    <footer class="footer">
+      <p>COPYRIGHT © 2021 台北一日遊</p>
+    </footer>
+  </body>
+  <script src="../static/js/booking.js" type="text/javascript"></script>
+  <script src="../static/js/user.js" type="text/javascript"></script>
+</html>

@@ -58,6 +58,7 @@ signupForm.addEventListener("submit", (e) => {
         return;
       }
       signup_note.textContent = "註冊成功";
+      signup_note.classList.remove("warming");
       signup_note.classList.add("hint");
       signupForm.style.height = "350px";
       signup_name.value = "";
@@ -103,6 +104,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       if (data["data"] == null) {
         document.querySelector(".signin").style.display = "block";
       } else {
+        document.body.classList.add("isSignIn");
         document.querySelector(".signin").style.display = "none";
         let signout = document.createElement("p");
         signout.textContent = "登出系統";
@@ -112,8 +114,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
         let memberdiv = document.querySelector(".memberdiv");
         memberdiv.append(signout);
       }
+      if (location.href.split("/")[3] == "booking") {
+        getSchedule(data["data"]);
+      }
     });
 });
+
 function deleteUser() {
   fetch(URL, { method: "DELETE" })
     .then((response) => {
@@ -124,4 +130,12 @@ function deleteUser() {
         location.reload();
       }
     });
+}
+
+function openPopup() {
+  if (document.body.classList.contains("isSignIn")) {
+    location.href = "/booking ";
+  } else {
+    loginPopup.style.display = "block";
+  }
 }

@@ -53,12 +53,14 @@ let header = ` <div class="loginPopup">
     type="email"
     placeholder="輸入電子郵件"
     required
+    
   />
   <input
     class="user-input"
     id="signup-password"
     type="password"
     placeholder="輸入密碼"
+   
     required
   />
   <button class="user-btn" type="submit" id="signup-btn">
@@ -74,7 +76,7 @@ let header = ` <div class="loginPopup">
 
   <div class="menu">
     <div class="reservediv">
-      <p><a class="text">預定行程</a></p>
+      <p><a class="text" onclick="openPopup()">預定行程</a></p>
     </div>
     <div class="memberdiv">
       <p class="signin">
@@ -86,3 +88,5 @@ let header = ` <div class="loginPopup">
 </nav>`;
 
 document.write(header);
+// pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+// pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$"
