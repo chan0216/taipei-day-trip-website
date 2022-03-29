@@ -1,6 +1,7 @@
 from flask import *
 from api.api import api_blueprint
 from api.user import user_blueprint
+from api.booking import booking_blueprint
 from decouple import config
 app=Flask(__name__)
 app.config["JSON_AS_ASCII"]=False
@@ -8,6 +9,7 @@ app.config['JSON_SORT_KEYS'] = False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 app.register_blueprint(api_blueprint,url_prefix='/api')
 app.register_blueprint(user_blueprint,url_prefix='/api')
+app.register_blueprint(booking_blueprint,url_prefix='/api')
 app.secret_key=config("secret_key")
 
 # Pages
@@ -24,4 +26,4 @@ def booking():
 def thankyou():
 	return render_template("thankyou.html")
 
-app.run(host="0.0.0.0",port=3000)
+app.run(host="0.0.0.0",port=3000,debug=False)

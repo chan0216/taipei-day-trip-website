@@ -1,5 +1,10 @@
 from flask import Blueprint,request,jsonify,make_response,session
 from model.public import con_pool
+from decouple import config
+import jwt
+import time
+import datetime
+
 import re
 user_blueprint = Blueprint('user', __name__)
 db=con_pool.get_connection()
@@ -39,8 +44,15 @@ def login_user():
         cursor.execute("SELECT name,email,password FROM user WHERE email=%s and password=%s", (email,password))
         userData=cursor.fetchone()
         if userData is not None:
-            session["email"]=userData["email"]
+            # session["email"]=userData["email"]
+            payload={
+                "user":userData['email'],
+                "exp":datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
+
+            }
+            token=jwt.encode(payload,config("secret_key"), algorithm='HS256')
             res = make_response(jsonify({"ok": True}), 200)
+            res.set_cookie('token',token,expires=datetime.datetime.utcnow() + datetime.timedelta(minutes=30))
             return res
         else: 
             res = make_response(jsonify({"error": True,"message": "登入失敗，帳號或密碼錯誤"}), 400)
@@ -51,8 +63,10 @@ def login_user():
 
 @user_blueprint.route("/user",methods=["GET"])
 def getUser():
-    if "email" in session:
-        cursor.execute("SELECT id,name,email FROM user WHERE email=%s", (session["email"],))
+    token=request.cookies.get('token')
+    if token is not None:
+        data=jwt.decode(token.encode('UTF-8'), config("secret_key"), algorithms=["HS256"])
+        cursor.execute("SELECT id,name,email FROM user WHERE email=%s", (data["user"],))
         userData=cursor.fetchone()
         res = make_response(jsonify({"data": userData}),200)
         return res
@@ -61,5 +75,8 @@ def getUser():
 
 @user_blueprint.route("/user",methods=["DELETE"])
 def deleteUser():
-    session.pop('email', None)
-    return make_response(jsonify({"ok": True}),200)
+    res=make_response(jsonify({"ok": True}),200)
+    # res.delete_cookie("token")
+    res.set_cookie('token', expires=0)
+    return res
+
