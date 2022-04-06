@@ -16,6 +16,7 @@ def handle_order():
       if token is None:
           res = make_response(jsonify({"error": True,"message": "未登入系統，拒絕存取"}), 403)
           return res
+      
       data = request.get_json()
       name=data["order"]["contact"]["name"]
       email=data["order"]["contact"]["email"]
@@ -70,37 +71,38 @@ def Get_order(orderNumber):
     if token is None:
         res = make_response(jsonify({"error": True,"message": "未登入系統，拒絕存取"}), 403)
         return res
-    db=con_pool.get_connection()
-    cursor=db.cursor(dictionary=True,buffered=True)
-    sql="""SELECT orders.ordernumber,orders.price,orders.username ,orders.email,orders.phone,orders.date,
-    orders.time,orders.attractionId,orders.status,information.name ,information.address,information.images 
-    FROM orders INNER JOIN information ON orders.attractionId=information.id WHERE orders.ordernumber=%s """
-    val=(orderNumber,)
-    cursor.execute(sql, val)
-    result=cursor.fetchone()
-    db.close()
-    if result is not None:
-      order_info={
-        "number":result["ordernumber"],
-        "price":result["price"],
-        "trip":{
-          "attraction":{
-            "id":result["attractionId"],
-            "name":result["name"],
-            "address":result["address"],
-            "image":json.loads(result["images"])[0]
-          },
-          "date":result["date"],
-          "time":result["time"],
-        },
-        "contact":{
-          "name":result["username"],
-          "email":result["email"],
-          "phone":result["username"]
-        },
-        "status":result["status"]
-      }
-      return jsonify({"data":order_info})
     else:
-      res = make_response(jsonify({"data": None,"message": "沒有資料，請確認訂單編號"}), 200)
-      return res
+      db=con_pool.get_connection()
+      cursor=db.cursor(dictionary=True,buffered=True)
+      sql="""SELECT orders.ordernumber,orders.price,orders.username ,orders.email,orders.phone,orders.date,
+      orders.time,orders.attractionId,orders.status,information.name ,information.address,information.images 
+      FROM orders INNER JOIN information ON orders.attractionId=information.id WHERE orders.ordernumber=%s """
+      val=(orderNumber,)
+      cursor.execute(sql, val)
+      result=cursor.fetchone()
+      db.close()
+      if result is not None:
+        order_info={
+          "number":result["ordernumber"],
+          "price":result["price"],
+          "trip":{
+            "attraction":{
+              "id":result["attractionId"],
+              "name":result["name"],
+              "address":result["address"],
+              "image":json.loads(result["images"])[0]
+            },
+            "date":result["date"],
+            "time":result["time"],
+          },
+          "contact":{
+            "name":result["username"],
+            "email":result["email"],
+            "phone":result["phone"]
+          },
+          "status":result["status"]
+        }
+        return jsonify({"data":order_info})
+      else:
+        res = make_response(jsonify({"data": None,"message": "沒有資料，請確認訂單編號"}), 200)
+        return res
