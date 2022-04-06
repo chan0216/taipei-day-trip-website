@@ -53,6 +53,7 @@ def handle_order():
       sql = "Insert Into orders(ordernumber, price, username, email, phone, date, time, attractionId,status) Values( %s, %s, %s, %s, %s, %s, %s, %s,%s)"
       val=(order_number,data["order"]["price"],name,email,phone_number,data["order"]["trip"]["date"],data["order"]["trip"]["time"],data["order"]["trip"]["attraction"]["id"],res["status"])
       cursor.execute(sql, val)
+      db.commit()
       cursor.execute("DELETE FROM schedule WHERE email=%s",(email,))
       db.commit()
       db.close()
