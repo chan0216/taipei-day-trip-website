@@ -14,6 +14,7 @@
 }
 .ordercontainer_text {
   margin: 0 auto 20px;
+  padding: 0 15px;
 }
 .ordercontainer_text :nth-child(2) {
   color: #666666;

@@ -1,5 +1,6 @@
 import json
 import re
+import jwt
 from decouple import config
 from itsdangerous import NoneAlgorithm
 import requests
@@ -9,8 +10,9 @@ from model.public import con_pool
 order_blueprint = Blueprint('order', __name__)
 @order_blueprint.route("/orders",methods=["POST"])
 def handle_order():
-  try:
+  # try:
       token=request.cookies.get('token')
+      jwtdata=jwt.decode(token.encode('UTF-8'), config("secret_key"), algorithms=["HS256"])
       if token is None:
           res = make_response(jsonify({"error": True,"message": "未登入系統，拒絕存取"}), 403)
           return res
@@ -54,13 +56,13 @@ def handle_order():
       val=(order_number,data["order"]["price"],name,email,phone_number,data["order"]["trip"]["date"],data["order"]["trip"]["time"],data["order"]["trip"]["attraction"]["id"],res["status"])
       cursor.execute(sql, val)
       db.commit()
-      cursor.execute("DELETE FROM schedule WHERE email=%s",(email,))
+      cursor.execute("DELETE FROM schedule WHERE email=%s",(jwtdata["user"],))
       db.commit()
       db.close()
       return jsonify({"data":{"number":order_number, "payment":{"status":res["status"],"message":message}}})
-  except:
-        res = make_response(jsonify({"error": True,"message": "伺服器內部錯誤"}),500)
-        return res
+  # except:
+  #       res = make_response(jsonify({"error": True,"message": "伺服器內部錯誤"}),500)
+  #       return res
 
 @order_blueprint.route("/order/<orderNumber>",methods=["GET"])
 def Get_order(orderNumber):
@@ -98,7 +100,6 @@ def Get_order(orderNumber):
         },
         "status":result["status"]
       }
-      
       return jsonify({"data":order_info})
     else:
       res = make_response(jsonify({"data": None,"message": "沒有資料，請確認訂單編號"}), 200)
