@@ -10,7 +10,7 @@ from model.public import con_pool
 order_blueprint = Blueprint('order', __name__)
 @order_blueprint.route("/orders",methods=["POST"])
 def handle_order():
-  # try:
+  try:
       token=request.cookies.get('token')
       jwtdata=jwt.decode(token.encode('UTF-8'), config("secret_key"), algorithms=["HS256"])
       if token is None:
@@ -60,9 +60,9 @@ def handle_order():
       db.commit()
       db.close()
       return jsonify({"data":{"number":order_number, "payment":{"status":res["status"],"message":message}}})
-  # except:
-  #       res = make_response(jsonify({"error": True,"message": "伺服器內部錯誤"}),500)
-  #       return res
+  except:
+        res = make_response(jsonify({"error": True,"message": "伺服器內部錯誤"}),500)
+        return res
 
 @order_blueprint.route("/order/<orderNumber>",methods=["GET"])
 def Get_order(orderNumber):
