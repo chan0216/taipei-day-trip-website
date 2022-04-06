@@ -9,6 +9,7 @@ fetch(`/api/order/${order_numbr}`)
   })
   .then((res) => {
     if (res["error"]) {
+      document.body.style.display = "none";
       window.location.href = "/";
     }
     if (res["data"] == null) {

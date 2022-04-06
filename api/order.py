@@ -2,7 +2,6 @@ import json
 import re
 import jwt
 from decouple import config
-from itsdangerous import NoneAlgorithm
 import requests
 import datetime
 from flask import Blueprint,request,jsonify,make_response,session
@@ -12,11 +11,10 @@ order_blueprint = Blueprint('order', __name__)
 def handle_order():
   try:
       token=request.cookies.get('token')
-      jwtdata=jwt.decode(token.encode('UTF-8'), config("secret_key"), algorithms=["HS256"])
       if token is None:
           res = make_response(jsonify({"error": True,"message": "未登入系統，拒絕存取"}), 403)
           return res
-      
+      jwtdata=jwt.decode(token.encode('UTF-8'), config("secret_key"), algorithms=["HS256"])
       data = request.get_json()
       name=data["order"]["contact"]["name"]
       email=data["order"]["contact"]["email"]
