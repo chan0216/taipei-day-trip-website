@@ -1,4 +1,5 @@
 let bookingUrl = "/api/booking";
+let infos = [];
 //創建booking頁面
 function processBooking(info) {
   if (info != null) {
@@ -28,6 +29,15 @@ function processBooking(info) {
     bookingImg.classList.add("bookingImg");
     let section__img = document.querySelector(".section__imgdiv");
     section__img.append(bookingImg);
+    infos.push(
+      info["price"],
+      info["attraction"]["id"],
+      info["attraction"]["name"],
+      info["attraction"]["address"],
+      info["attraction"]["image"],
+      info["date"],
+      info["time"]
+    );
   } else {
     let notplan = document.querySelector(".notplan");
     notplan.style.display = "block";

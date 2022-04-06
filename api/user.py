@@ -2,7 +2,6 @@ from flask import Blueprint,request,jsonify,make_response,session
 from model.public import con_pool
 from decouple import config
 import jwt
-import time
 import datetime
 
 import re
@@ -47,12 +46,12 @@ def login_user():
             # session["email"]=userData["email"]
             payload={
                 "user":userData['email'],
-                "exp":datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
+                "exp":datetime.datetime.utcnow() + datetime.timedelta(minutes=180)
 
             }
             token=jwt.encode(payload,config("secret_key"), algorithm='HS256')
             res = make_response(jsonify({"ok": True}), 200)
-            res.set_cookie('token',token,expires=datetime.datetime.utcnow() + datetime.timedelta(minutes=30))
+            res.set_cookie('token',token,expires=datetime.datetime.utcnow() + datetime.timedelta(minutes=180))
             return res
         else: 
             res = make_response(jsonify({"error": True,"message": "登入失敗，帳號或密碼錯誤"}), 400)

@@ -16,6 +16,10 @@ body {
   margin-bottom: 40px;
   grid-template-columns: 266px 700px;
 }
+.prompt,
+.cardprompt {
+  color: rgb(188, 37, 37);
+}
 .section__imgdiv {
   text-align: center;
 }
@@ -54,14 +58,12 @@ hr {
   width: 1200px;
   margin: 0 auto;
 }
-.contact_form,
-.pay_form {
+.contact_form {
   width: 980px;
   margin: 0 auto;
 }
 
-.contact_form :nth-child(1),
-.pay_form :nth-child(1) {
+.contact_form :nth-child(1) {
   font-size: 19px;
   margin-top: 44px;
   font-weight: 700;
@@ -69,8 +71,13 @@ hr {
   line-height: 16px;
 }
 
-.contact_form input,
-.pay_form input {
+.cardform :nth-child(1) {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.contact_form input {
   border: 1px solid #e8e8e8;
   height: 38px;
   width: 200px;
@@ -79,7 +86,7 @@ hr {
   border-radius: 5px;
   outline: none;
 }
-.contact_form :nth-child(10) {
+.notice {
   font-weight: 700;
   margin-top: 5px;
   margin-bottom: 40px;
@@ -93,9 +100,6 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.pay_form input::placeholder {
-  color: #757575;
-}
 .h3 {
   margin-top: 25px;
 }
@@ -154,6 +158,22 @@ main {
 .container__place {
   margin-right: 35px;
 }
+.tpfield {
+  height: 38px;
+  width: 200px;
+  border: 1px solid #e8e8e8;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-flex;
+  margin-bottom: 15px;
+}
+
+.cardform {
+  width: 980px;
+  margin: 0 auto;
+  margin-top: 44px;
+}
+
 @media (max-width: 1200px) {
   .welcomediv {
     margin: 46px auto 30px;
@@ -171,10 +191,14 @@ main {
     margin: 0 auto 40px;
   }
 
-  .contact_form,
-  .pay_form {
+  .contact_form {
     width: 90%;
     margin: 0 auto;
+  }
+  .cardform {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 44px;
   }
   .confirm {
     width: 90%;
@@ -199,10 +223,14 @@ main {
     padding: 26px 0;
   }
 
-  .contact_form,
-  .pay_form {
+  .contact_form {
     width: 100%;
     padding: 0 10px;
+  }
+  .cardform {
+    width: 100%;
+    padding: 0 10px;
+    margin-top: 44px;
   }
   .confirm {
     width: 95%;
