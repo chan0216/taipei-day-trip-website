@@ -1,0 +1,68 @@
+.ordercontainer {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.ordercontainer_imgdiv {
+  display: flex;
+  justify-content: center;
+}
+.orderImg {
+  height: 200px;
+  width: 266px;
+  margin: 10px 20px 10px;
+}
+.ordercontainer_text {
+  margin: 0 auto 20px;
+  padding: 0 15px;
+}
+.ordercontainer_text :nth-child(2) {
+  color: #666666;
+  font-weight: bold;
+}
+.ordercontainer_text :nth-child(1) {
+  color: #448899;
+}
+.ordercontainer_text * {
+  color: #666666;
+  padding-top: 10px;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex-grow: 1;
+}
+.footer {
+  margin-top: 20px;
+  background-color: #757575;
+  height: 30%;
+  width: 100%;
+}
+.footer p {
+  background-color: #757575;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 45px;
+  line-height: 13px;
+  text-align: center;
+}
+.wrongOrder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  height: 150px;
+}
+/* @media (max-width: 600px) {
+  .ordercontainer {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+} */
