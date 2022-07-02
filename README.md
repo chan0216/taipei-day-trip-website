@@ -35,5 +35,4 @@ Test Credit Card
 ### Lazy Loading & Infinite Scroll
 
 - Scroll down can view all attractions.
-
-![台北一日遊_-_Google_Chrome_2022-07-02_14-43-39_AdobeExpress](https://user-images.githubusercontent.com/94737861/176990464-187ffc1b-72c0-4484-ad56-63acb358810c.gif)
+  ![](static/img/%E5%8F%B0%E5%8C%97%E4%B8%80%E6%97%A5%E9%81%8A%20-%20%E5%80%8B%E4%BA%BA.gif)
