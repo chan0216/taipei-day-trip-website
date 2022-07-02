@@ -2,9 +2,11 @@ from flask import Blueprint,request,jsonify,make_response
 import json
 from model.public import con_pool
 api_blueprint = Blueprint('api', __name__)
-db=con_pool.get_connection()
-cursor=db.cursor(dictionary=True)
+
 def select(index,keyword=None):
+    try:
+        db=con_pool.get_connection()
+        cursor=db.cursor(dictionary=True)
         if keyword is not None:
             cursor.execute("SELECT * FROM information WHERE name LIKE %s limit %s OFFSET %s ", (f'%{keyword}%',index+13,index))      
             attrs = cursor.fetchall()
@@ -19,6 +21,9 @@ def select(index,keyword=None):
             for i in attrs:
                 i["images"]=json.loads(i["images"])
             return attrs
+    finally:
+        cursor.close()
+        db.close()
         
 @api_blueprint.route("/attractions",methods=["GET"])
 def attractionApi():
@@ -58,6 +63,8 @@ def attractionApi():
 @api_blueprint.route("/attraction/<attractionId>",methods=["GET"])
 def attractionId(attractionId):
     try:
+        db=con_pool.get_connection()
+        cursor=db.cursor(dictionary=True)
         cursor.execute("SELECT * FROM information WHERE id = %s", (attractionId,))
         selectid = cursor.fetchone()
         if selectid  is None:
@@ -73,5 +80,7 @@ def attractionId(attractionId):
         response = make_response(jsonify({"error": True,"message": "伺服器內部錯誤"}),500)
         response.headers['Content-Type'] ='application/json'
         return response
-
+    finally:
+        cursor.close()
+        db.close()
 

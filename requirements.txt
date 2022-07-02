@@ -1,0 +1,8 @@
+python-decouple
+Flask
+mysql-connector-python
+python-dotenv 
+flask-mail
+flask-bcrypt
+PyJWT
+requests

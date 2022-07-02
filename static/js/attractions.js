@@ -1,6 +1,6 @@
 let url = new URL(window.location.href);
 const fetchAttraction = async () => {
-  const result = await fetch(`/api/${url.pathname}`);
+  const result = await fetch(`/api${url.pathname}`);
   const data = await result.json();
   const attra = data.data;
   createElement(attra);
