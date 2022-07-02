@@ -55,16 +55,13 @@ Test Credit Card
 ### Booking System
 - Payment gateway using TapPay SDK.
 
-![台北一日遊 book](https://user-images.githubusercontent.com/94737861/176994680-a9c46021-ffac-4d46-a7ce-d884127d47aa.gif)
-
+<img src="https://user-images.githubusercontent.com/94737861/176994680-a9c46021-ffac-4d46-a7ce-d884127d47aa.gif" width="640" height="360" >
 
 
 ### RWD
 - Create a responsive layout with CSS Grid.
 
-![rwd](https://user-images.githubusercontent.com/94737861/176994319-64fd0b1a-389a-4f81-8193-489d4285edf0.gif)
-
-
+<img src="https://user-images.githubusercontent.com/94737861/176995472-633fbe7e-d086-4824-850d-18d6f363f0ed.gif" width="640" height="360" >
 
 ### Contact
 - 詹心怡 Chan,Hsin-Yi
