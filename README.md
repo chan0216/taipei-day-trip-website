@@ -1,12 +1,8 @@
 # Taipei Day Trip
 
----
-
 Trip website of Taipei attractions, you can search the attractions and choose your trip.
 
 ## Demo
-
----
 
 Website URL : https://memorydev.com/
 
@@ -26,8 +22,6 @@ Test Credit Card
 
 ## Technique
 
----
-
 - Python Flask for server framework.
 - Deploy a web server to AWS EC2/Linux.
 - Following RESTful API.
@@ -38,7 +32,8 @@ Test Credit Card
 
 ## Introduction
 
-- Lazy Loading & Infinite Scroll
+### Lazy Loading & Infinite Scroll
 
-Scroll down can view all attractions.
-![](static/img/%E5%8F%B0%E5%8C%97%E4%B8%80%E6%97%A5%E9%81%8A%20gif.gif)
+- Scroll down can view all attractions.
+
+![台北一日遊_-_Google_Chrome_2022-07-02_14-43-39_AdobeExpress](https://user-images.githubusercontent.com/94737861/176990464-187ffc1b-72c0-4484-ad56-63acb358810c.gif)
