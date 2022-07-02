@@ -61,7 +61,7 @@ Test Credit Card
 ### RWD
 - Create a responsive layout with CSS Grid.
 
-![rwd](https://user-images.githubusercontent.com/94737861/176994225-08f2b689-3c19-43fd-9443-1b6426a796d6.gif)
+![rwd](https://user-images.githubusercontent.com/94737861/176994319-64fd0b1a-389a-4f81-8193-489d4285edf0.gif)
 
 
 
