@@ -35,3 +35,10 @@ Test Credit Card
 - Registration and Login with JWT Authentication.
 - Create a responsive layout with CSS Grid.
 - Build Infinite Scroll, Image Carousel Using pure JavaScript.
+
+## Introduction
+
+- Lazy Loading & Infinite Scroll
+
+Scroll down can view all attractions.
+![](static/img/%E5%8F%B0%E5%8C%97%E4%B8%80%E6%97%A5%E9%81%8A%20gif.gif)
