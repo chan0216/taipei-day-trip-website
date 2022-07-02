@@ -94,7 +94,7 @@ a {
 .loginform {
   position: relative;
   left: 50%;
-  transform: translate(-50%, 80px);
+  transform: translate(-50%, 150px);
   z-index: 5;
   width: 340px;
   background-color: #ffffff;
