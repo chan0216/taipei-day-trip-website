@@ -1,12 +1,8 @@
 # Taipei Day Trip
 
----
-
 Trip website of Taipei attractions, you can search the attractions and choose your trip.
 
 ## Demo
-
----
 
 Website URL : https://memorydev.com/
 
@@ -26,8 +22,6 @@ Test Credit Card
 
 ## Technique
 
----
-
 - Python Flask for server framework.
 - Deploy a web server to AWS EC2/Linux.
 - Following RESTful API.
@@ -35,3 +29,6 @@ Test Credit Card
 - Registration and Login with JWT Authentication.
 - Create a responsive layout with CSS Grid.
 - Build Infinite Scroll, Image Carousel Using pure JavaScript.
+
+## Introduction
+- Lazy Loading & Infinite Scroll
