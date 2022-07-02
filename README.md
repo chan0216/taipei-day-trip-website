@@ -35,4 +35,10 @@ Test Credit Card
 ### Lazy Loading & Infinite Scroll
 
 - Scroll down can view all attractions.
+
   ![](static/img/%E5%8F%B0%E5%8C%97%E4%B8%80%E6%97%A5%E9%81%8A%20-%20%E5%80%8B%E4%BA%BA.gif)
+
+### Keyword Search
+
+- users can enter keywords to search for attractions.
+  ![](static/img/keyword_.gif)
