@@ -1,6 +1,6 @@
 # Taipei Day Trip
 
-Trip website of Taipei attractions, you can search the attractions and choose your trip.
+Trip website of Taipei attractions, users can search for attractions and choose their trip. 
 
 ## Demo
 
