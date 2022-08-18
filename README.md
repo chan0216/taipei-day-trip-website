@@ -29,6 +29,8 @@ Test Credit Card
 - Registration and Login with JWT Authentication.
 - Create a responsive layout with CSS Grid.
 - Build Infinite Scroll, Image Carousel Using pure JavaScript.
+## Database Schema
+![taipei_dbtable](https://user-images.githubusercontent.com/94737861/185329561-ff10ac67-da96-459c-b19f-5ac8a72f70aa.png)
 
 ## Introduction
 
