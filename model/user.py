@@ -20,7 +20,6 @@ def user_signup(data):
         else:
             raise EmailException("註冊失敗, Email已註冊過")
     except Exception as e:
-        print(e)
         db.rollback()
         raise e
     finally:
@@ -30,30 +29,31 @@ def user_signup(data):
 
 def user_signin(data):
     try:
-
-        email = data["email"]
-        password = data["password"]
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True, buffered=True)
+        email = data["email"]
+        password = data["password"]
         cursor.execute(
-            "SELECT id,email,password FROM user WHERE email=%s and password=%s", (email, password))
-        userData = cursor.fetchone()
-        return userData
-    except:
-        return "error"
+            "SELECT id,email,password FROM users WHERE email=%s and password=%s", (email, password))
+        user_data = cursor.fetchone()
+        return user_data
+    except Exception as e:
+        raise e
     finally:
         cursor.close()
         db.close()
 
 
-def user_data(data):
+def get_user(data):
     try:
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True, buffered=True)
         cursor.execute(
-            "SELECT id,name,email FROM user WHERE email=%s", (data["user"],))
-        userData = cursor.fetchone()
-        return userData
+            "SELECT id,name,email FROM users WHERE email=%s", (data["user"],))
+        user_data = cursor.fetchone()
+        return user_data
+    except Exception as e:
+        raise e
     finally:
         cursor.close()
         db.close()
