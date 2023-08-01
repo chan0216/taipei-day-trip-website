@@ -1,6 +1,5 @@
 from flask import Blueprint, request, jsonify, make_response
 import json
-from model.public import con_pool
 import model.attraction
 api_blueprint = Blueprint('api', __name__)
 

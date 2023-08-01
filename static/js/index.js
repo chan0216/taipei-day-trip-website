@@ -4,6 +4,8 @@ const gridbox = document.querySelector(".gridbox");
 let keyword = "";
 let page = 0;
 let isfetching = false;
+let isComposing = false;
+
 //創建景點頁面
 class Createelement {
   constructor(name, images, mrt, category, id) {
@@ -93,7 +95,6 @@ document.getElementById("Button").addEventListener("click", () => {
   keyword = document.querySelector("#search_attrs").value;
   page = 0;
   fetchattras();
-  searchinput.value = "";
 });
 let options = {
   rootMargin: "0px",
@@ -110,13 +111,21 @@ let callback = (entry) => {
 const observer = new IntersectionObserver(callback, options);
 observer.observe(footer);
 //enter可提交表單
-searchinput.addEventListener("keyup", function (event) {
-  event.preventDefault();
-  if (event.keyCode === 13) {
-    document.getElementById("Button").click();
-    event.target.value = "";
+searchinput.addEventListener("compositionstart", () => {
+  isComposing = true;
+});
+
+searchinput.addEventListener("compositionend", () => {
+  isComposing = false;
+});
+
+searchinput.addEventListener("keydown", function (event) {
+  if (event.keyCode === 13 && !isComposing) {
+    event.preventDefault();
+    document.querySelector("#Button").click();
   }
 });
+
 function selectid(checkid) {
   window.location.href = `/attraction/${checkid}`;
 }

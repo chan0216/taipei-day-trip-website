@@ -1,4 +1,4 @@
-from model.public import con_pool
+from common.config.db_config import con_pool
 import json
 
 

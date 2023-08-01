@@ -7,7 +7,6 @@ import model.order
 import requests
 import datetime
 from flask import Blueprint, request, jsonify, make_response
-from model.public import con_pool
 order_blueprint = Blueprint('order', __name__)
 
 
