@@ -1,30 +1,34 @@
-from flask import Blueprint, request, jsonify, make_response
 import model.user
-from decouple import config
 import jwt
 import datetime
 import re
+from flask import Blueprint, request, jsonify, make_response
+from decouple import config
+from common.utils.error_util import EmailException
+from common.utils.response_util import success,failure
+from common.utils.request_util import check_request
+
 user_blueprint = Blueprint('user', __name__)
 
 
-# 處理註冊會員
+#處理會員註冊
 @user_blueprint.route("/user", methods=["POST"])
+@check_request("name", "email", "password")
 def signup_user():
     data = request.get_json()
-    result = model.user.user_signup(data)
-    if result == "ok":
-        res = make_response(jsonify({"ok": True}), 200)
-    elif result == "error":
-        res = make_response(
-            jsonify({"error": True, "message": "伺服器內部錯誤"}), 500)
-    else:
-        res = make_response(
-            jsonify({"error": True, "message": "註冊失敗,重複的Email"}), 400)
-    return res
+    pattern = re.compile("^([\w\.\-]){1,64}\@([\w\.\-]){1,64}$")
+    print(pattern.match(data['email']))
+    if not pattern.match(data['email']):
+        return failure("Email格式錯誤", 400)
+    try:
+        result = model.user.user_signup(data)
+        return success()
+    except EmailException as e:
+        return failure(str(e), 400)
+    except Exception as e:
+        return failure()
 
 # 登入會員
-
-
 @user_blueprint.route("/user", methods=["PATCH"])
 def user_signin():
     data = request.get_json()

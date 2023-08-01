@@ -1,4 +1,5 @@
 from model.public import con_pool
+from common.utils.error_util import EmailException
 import re
 
 
@@ -9,22 +10,21 @@ def user_signup(data):
         name = data["name"]
         email = data["email"]
         password = data["password"]
-        cursor.execute("SELECT email FROM user WHERE email=%s", (email,))
-        userEmail = cursor.fetchone()
-        pattern = re.compile("^([\w\.\-]){1,64}\@([\w\.\-]){1,64}$")
+        cursor.execute("SELECT email FROM users WHERE email=%s", (email,))
+        userEmail = cursor.fetchone()      
         if userEmail is None:
-            if pattern.match(email):
-                cursor.execute("INSERT INTO user (name, email, password) VALUES (%s, %s, %s)",
-                               (name, email, password))
-                return "ok"
+            cursor.execute("INSERT INTO users (name, email, password) VALUES (%s, %s, %s)",
+                            (name, email, password))
+            db.commit()
+            return True
         else:
-            return "重複的Email"
-    except:
+            raise EmailException("註冊失敗, Email已註冊過")
+    except Exception as e:
+        print(e)
         db.rollback()
-        return "error"
+        raise e
     finally:
         cursor.close()
-        db.commit()
         db.close()
 
 
