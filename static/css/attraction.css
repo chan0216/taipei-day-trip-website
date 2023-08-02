@@ -29,7 +29,7 @@ label {
 .bookdiv {
   margin-top: 20px;
   width: 600px;
-  height: 302px;
+  min-height: 302px;
   border-radius: 5px;
   background-color: #e8e8e8;
 }
@@ -47,6 +47,7 @@ input[type="date"] {
   margin-top: 15px;
   width: 193px;
   height: 35px;
+  cursor: pointer;
 }
 
 input[type="radio"][name="selecttime"] {
@@ -57,8 +58,12 @@ input[type="radio"][name="selecttime"] {
   height: 22px;
   background-color: #ffffff;
   border-radius: 15px;
+  cursor: pointer;
 }
-
+.warning{
+  color: rgb(163, 55, 55);
+  padding-bottom: 15px;
+}
 input[type="radio"][name="selecttime"]:checked:after {
   content: "";
   width: 18px;

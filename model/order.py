@@ -6,8 +6,8 @@ def get_order(orderNumber):
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True, buffered=True)
         sql = """SELECT orders.ordernumber,orders.price,orders.username ,orders.email,orders.phone,orders.date,
-    orders.time,orders.attraction_id,orders.status,attractions.name ,attractions.address,attractions.images 
-    FROM orders INNER JOIN attractions ON orders.attraction_id=attractions.id WHERE orders.ordernumber=%s """
+        orders.time,orders.attraction_id,orders.status,attractions.name ,attractions.address,attractions.images 
+        FROM orders INNER JOIN attractions ON orders.attraction_id=attractions.id WHERE orders.ordernumber=%s"""
         val = (orderNumber,)
         cursor.execute(sql, val)
         result = cursor.fetchone()

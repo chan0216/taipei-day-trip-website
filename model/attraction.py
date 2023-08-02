@@ -1,5 +1,6 @@
-from common.config.db_config import con_pool
 import json
+from common.config.db_config import con_pool
+
 
 
 def get_attractions(index, keyword):

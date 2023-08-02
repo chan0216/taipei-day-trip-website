@@ -78,6 +78,10 @@ function checkSchedule(e) {
     let selectTime = document.querySelector('input[name="selecttime"]:checked');
     let price = selectTime.value === "morning" ? 2000 : 2500;
     let attractionId = location.href.split("/")[4];
+    if (selectDate.value == "") {
+      document.querySelector(".warning").textContent = "請輸入完整";
+      return;
+    }
     fetch(bookingUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
