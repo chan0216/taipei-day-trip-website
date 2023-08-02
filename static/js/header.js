@@ -13,6 +13,7 @@ let header = ` <div class="loginPopup">
     class="user-input"
     type="email"
     placeholder="輸入電子信箱"
+    value="test@test.com"
     required
   />
   <br />
@@ -21,6 +22,7 @@ let header = ` <div class="loginPopup">
     class="user-input"
     type="password"
     placeholder="輸入密碼"
+    value="test"
     required
   />
   <br />
@@ -88,5 +90,3 @@ let header = ` <div class="loginPopup">
 </nav>`;
 
 document.write(header);
-// pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
-// pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$"

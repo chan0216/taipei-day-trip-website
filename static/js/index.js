@@ -4,6 +4,8 @@ const gridbox = document.querySelector(".gridbox");
 let keyword = "";
 let page = 0;
 let isfetching = false;
+let isComposing = false;
+
 //創建景點頁面
 class Createelement {
   constructor(name, images, mrt, category, id) {
@@ -13,6 +15,7 @@ class Createelement {
     this.category = category;
     this.id = id;
   }
+
   create() {
     let div = document.createElement("div");
     div.className = "div";
@@ -43,6 +46,10 @@ class Createelement {
 }
 //fetch 景點
 function fetchattras() {
+  if (page == null) {
+    observer.unobserve(footer);
+    return;
+  }
   let apiurl = keyword
     ? `/api/attractions?page=${page}&keyword=${keyword}`
     : `/api/attractions?page=${page}`;
@@ -53,31 +60,26 @@ function fetchattras() {
         return response.json();
       })
       .then((data) => {
-        //提早return就不用else
         if (data["error"]) {
           gridbox.innerHTML = `沒有符合${keyword}的景點`;
           isfetching = false;
           return;
         }
-        if (page != null) {
-          let attras = data.data;
-          for (let attra of attras) {
-            let showpage = new Createelement(
-              attra.name,
-              attra.images[0],
-              attra.mrt,
-              attra.category,
-              attra.id
-            );
-            showpage.create();
-          }
-          //還有頁面，重新打開觀察
-          observer.observe(footer);
-        } else {
-          observer.unobserve(footer);
+        let attras = data.data;
+        for (let attra of attras) {
+          let showpage = new Createelement(
+            attra.name,
+            attra.images[0],
+            attra.mrt,
+            attra.category,
+            attra.id
+          );
+          showpage.create();
         }
-        isfetching = false;
+        //還有頁面，重新打開觀察
         page = data["nextPage"];
+        observer.observe(footer);
+        isfetching = false;
       })
       .catch((e) => {
         isfetching = false;
@@ -93,7 +95,6 @@ document.getElementById("Button").addEventListener("click", () => {
   keyword = document.querySelector("#search_attrs").value;
   page = 0;
   fetchattras();
-  searchinput.value = "";
 });
 let options = {
   rootMargin: "0px",
@@ -110,13 +111,21 @@ let callback = (entry) => {
 const observer = new IntersectionObserver(callback, options);
 observer.observe(footer);
 //enter可提交表單
-searchinput.addEventListener("keyup", function (event) {
-  event.preventDefault();
-  if (event.keyCode === 13) {
-    document.getElementById("Button").click();
-    event.target.value = "";
+searchinput.addEventListener("compositionstart", () => {
+  isComposing = true;
+});
+
+searchinput.addEventListener("compositionend", () => {
+  isComposing = false;
+});
+
+searchinput.addEventListener("keydown", function (event) {
+  if (event.keyCode === 13 && !isComposing) {
+    event.preventDefault();
+    document.querySelector("#Button").click();
   }
 });
+
 function selectid(checkid) {
   window.location.href = `/attraction/${checkid}`;
 }

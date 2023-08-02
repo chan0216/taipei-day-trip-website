@@ -57,7 +57,7 @@ signupForm.addEventListener("submit", (e) => {
         signupForm.style.height = "350px";
         return;
       }
-      signup_note.textContent = "註冊成功";
+      signup_note.textContent = "註冊成功，請重新登入";
       signup_note.classList.remove("warming");
       signup_note.classList.add("hint");
       signupForm.style.height = "350px";

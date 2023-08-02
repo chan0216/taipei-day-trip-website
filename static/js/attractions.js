@@ -93,3 +93,10 @@ morn_input.addEventListener("change", () => {
 after_input.addEventListener("change", () => {
   dollar.textContent = "2500";
 });
+
+let date = new Date();
+date.setHours(date.getHours() + 8);
+let localISOTime = date.toISOString().slice(0, 10);
+
+let dateInput = document.querySelector("#date");
+dateInput.min = localISOTime;

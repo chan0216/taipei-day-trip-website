@@ -127,8 +127,7 @@ body {
 }
 
 .search > input::placeholder {
-  color: #757575;
-  font-weight: bold;
+  color: #757575b0;
 }
 
 .gridbox {

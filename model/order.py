@@ -1,39 +1,38 @@
-from model.public import con_pool
+from common.config.db_config import con_pool
 
 
-def get_order(orderNumber):
+def get_order(order_number):
     try:
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True, buffered=True)
-        sql = """SELECT orders.ordernumber,orders.price,orders.username ,orders.email,orders.phone,orders.date,
-    orders.time,orders.attraction_id,orders.status,attractions.name ,attractions.address,attractions.images 
-    FROM orders INNER JOIN attractions ON orders.attraction_id=attractions.id WHERE orders.ordernumber=%s """
-        val = (orderNumber,)
+        sql = """SELECT orders.order_number,orders.price,orders.name,orders.email,orders.phone,DATE_FORMAT(orders.date, '%Y-%m-%d') as date,
+        orders.time_period,orders.attraction_id,orders.status,attractions.name,attractions.address,attractions.images 
+        FROM orders INNER JOIN attractions ON orders.attraction_id=attractions.id WHERE orders.order_number=%s"""
+        val = (order_number,)
         cursor.execute(sql, val)
         result = cursor.fetchone()
         return result
-    except:
-        return "error"
+    except Exception as e:
+        raise e
     finally:
         cursor.close()
         db.close()
 
 
-def post_order(order_number, data, current_user, name, email, phone_number, res, message):
+def post_order(current_user,order_number, data, status):
     try:
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True)
-        sql = "Insert Into orders(ordernumber, price, user_id,username, email, phone, date, time, attraction_id,status) Values(%s, %s, %s, %s, %s, %s, %s, %s, %s,%s)"
-        val = (order_number, data["order"]["price"], current_user, name, email, phone_number, data["order"]["trip"]
-               ["date"], data["order"]["trip"]["time"], data["order"]["trip"]["attraction"]["id"], res["status"])
+        sql = "Insert Into orders(order_number, price, user_id, name, email, phone, date, time_period, attraction_id, status) Values(%s, %s, %s, %s, %s, %s, %s, %s, %s,%s)"
+        val = (order_number, data["order"]["price"], current_user, data["order"]["contact"]["name"], data["order"]["contact"]["email"], data["order"]["contact"]["phone"], 
+               data["order"]["trip"]["date"], data["order"]["trip"]["time"], data["order"]["trip"]["attraction"]["id"], status)
         cursor.execute(sql, val)
-        db.commit()
         cursor.execute("DELETE FROM booking WHERE user_id=%s", (current_user,))
         db.commit()
-        return {"data": {"number": order_number, "payment": {"status": res["status"], "message": message}}}
-    except:
+        return True
+    except Exception as e:
         db.rollback()
-        return "error"
+        raise e
     finally:
         cursor.close()
         db.close()

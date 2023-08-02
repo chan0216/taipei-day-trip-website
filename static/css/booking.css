@@ -96,9 +96,6 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type="number"] {
-  -moz-appearance: textfield;
-}
 
 .h3 {
   margin-top: 25px;
@@ -144,7 +141,7 @@ input[type="number"] {
   text-align: center;
 }
 .footer.active {
-  height: 865px;
+  min-height: calc(100vh - 212px);
 }
 main {
   display: none;
@@ -173,6 +170,7 @@ main {
   margin: 0 auto;
   margin-top: 44px;
 }
+
 
 @media (max-width: 1200px) {
   .welcomediv {
@@ -247,9 +245,6 @@ main {
     width: 95%;
     margin: 35px auto 40px;
     padding: 0;
-  }
-  .footer.active {
-    height: 700px;
   }
 }
 @media (max-width: 420px) {
