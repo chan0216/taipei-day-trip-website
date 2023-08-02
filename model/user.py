@@ -1,6 +1,5 @@
 from common.config.db_config import con_pool
 from common.utils.error_util import EmailException
-import re
 
 
 def user_signup(data):

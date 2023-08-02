@@ -8,15 +8,14 @@ app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
 app.config['JSON_SORT_KEYS'] = False
 app.config["TEMPLATES_AUTO_RELOAD"] = True
+app.secret_key = config("secret_key")
 app.register_blueprint(attraction_blueprint, url_prefix='/api')
 app.register_blueprint(user_blueprint, url_prefix='/api')
 app.register_blueprint(booking_blueprint, url_prefix='/api')
 app.register_blueprint(order_blueprint, url_prefix='/api')
-app.secret_key = config("secret_key")
+
 
 # Pages
-
-
 @app.route("/")
 def index():
     return render_template("index.html")

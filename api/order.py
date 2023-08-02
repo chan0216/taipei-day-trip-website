@@ -5,38 +5,42 @@ import requests
 import datetime
 from decouple import config
 from common.utils.request_util import token_required
-from flask import Blueprint, request, jsonify, make_response
+from common.utils.response_util import success, failure
+from flask import Blueprint, request
+
 order_blueprint = Blueprint('order', __name__)
 
-@order_blueprint.route("/order/<orderNumber>", methods=["GET"])
-def get_order(orderNumber):
-    result = model.order.get_order(orderNumber)
-    if result is not None:
-        order_info = {
-            "number": result["ordernumber"],
-            "price": result["price"],
-            "trip": {
-                "attraction": {
-                    "id": result["attraction_id"],
-                    "name": result["name"],
-                    "address": result["address"],
-                    "image": json.loads(result["images"])[0]
+@order_blueprint.route("/order/<order_number>", methods=["GET"])
+def get_order(order_number):
+    try:
+        result = model.order.get_order(order_number)
+        if result:
+            order_info = {
+                "number": result["order_number"],
+                "price": result["price"],
+                "trip": {
+                    "attraction": {
+                        "id": result["attraction_id"],
+                        "name": result["name"],
+                        "address": result["address"],
+                        "image": json.loads(result["images"])[0]
+                    },
+                    "date": result["date"],
+                    "time": result["time_period"],
                 },
-                "date": result["date"],
-                "time": result["time"],
-            },
-            "contact": {
-                "name": result["username"],
-                "email": result["email"],
-                "phone": result["phone"]
-            },
-            "status": result["status"]
-        }
-        return jsonify({"data": order_info})
-    else:
-        res = make_response(
-            jsonify({"data": None, "message": "沒有資料，請確認訂單編號"}), 200)
-        return res
+                "contact": {
+                    "name": result["name"],
+                    "email": result["email"],
+                    "phone": result["phone"]
+                },
+                "status": result["status"]
+            }
+            return success(order_info)
+        else:
+            return failure("沒有資料，請確認訂單編號",400)
+    except Exception as e:
+        return failure(e,500)
+
 
 
 @order_blueprint.route("/orders", methods=["POST"])
@@ -44,23 +48,22 @@ def get_order(orderNumber):
 def post_order(current_user):
     data = request.get_json()
     try:
-        data = request.get_json()
         name = data["order"]["contact"]["name"]
         email = data["order"]["contact"]["email"]
         phone_number = data["order"]["contact"]["phone"]
         email_pattern = re.compile(
             "[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}")
         phone_pattern = re.compile("^(09)[0-9]{8}$")
-        if len(name) == 0 or len(email) == 0 or len(phone_number) == 0 or phone_pattern.match(phone_number) is None or email_pattern.match(email) is None:
-            res = make_response(
-                jsonify({"error": True, "message": "訂單建立失敗，輸入不完整或是格式不正確"}), 400)
-            return res
+        if not all([name, email, phone_number]):
+            return failure("訂單建立失敗，欄位不得為空",400)
+        elif not all([email_pattern.match(email), phone_pattern.match(phone_number)]):
+            return failure("訂單建立失敗，電子郵件或電話格式不正確",400)
         else:
             order_number = datetime.datetime.utcnow().strftime('%Y%m%d%H%M%S%f')
             payload = {
                 "prime": data["prime"],
                 "partner_key": config('partner_key'),
-                "merchant_id": "chan880216_TAISHIN",
+                "merchant_id": "chan880216_CTBC",
                 "details": "TapPay Test",
                 "amount": data["order"]["price"],
                 "order_number": order_number,
@@ -77,13 +80,11 @@ def post_order(current_user):
                           data=json.dumps(payload), headers=headers)
         res = r.json()
         if res["status"] == 0:
-            message = "付款成功"
+            message='付款成功'
         else:
             message = "付款失敗"
-        result = model.order.post_order(
-            order_number, data, current_user, name, email, phone_number, res, message)
-        return result
-    except:
-        res = make_response(
-            jsonify({"error": True, "message": "伺服器內部錯誤"}), 500)
-        return res
+        result = model.order.post_order(current_user,order_number, data, res['status'])
+        if result:
+            return success({"number": order_number, "payment": {"status": res["status"], "message": message}})
+    except Exception as e:
+        return failure()

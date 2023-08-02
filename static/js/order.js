@@ -6,12 +6,10 @@ TPDirect.setupSDK(
 
 let fields = {
   number: {
-    // css selector
     element: "#card-number",
     placeholder: "**** **** **** ****",
   },
   expirationDate: {
-    // DOM object
     element: document.getElementById("card-expiration-date"),
     placeholder: "MM / YY",
   },
@@ -93,7 +91,6 @@ function onSubmit(event) {
       cardprompt.textContent = "信用卡填寫錯誤";
       return;
     }
-    // console.log("get prime 成功，prime: " + result.card.prime);
     let prime = result.card.prime;
     cardprompt.textContent = "";
     submitPrime(prime);

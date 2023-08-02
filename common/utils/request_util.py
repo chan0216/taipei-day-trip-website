@@ -32,7 +32,7 @@ def token_required(f):
             current_user = jwtdata["user_id"]
         except Exception as e:
             res = make_response(
-                jsonify({"error": True, "message": "伺服器內部錯誤"}), 500)
+                jsonify({"error": True, "message": str(e)}), 500)
             return res
         return f(current_user)
     return decorated
