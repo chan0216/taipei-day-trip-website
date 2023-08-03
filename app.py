@@ -4,6 +4,7 @@ from api.user import user_blueprint
 from api.booking import booking_blueprint
 from api.order import order_blueprint
 from decouple import config
+
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
 app.config['JSON_SORT_KEYS'] = False
@@ -36,4 +37,4 @@ def thankyou():
     return render_template("thankyou.html")
 
 
-app.run(port=3000, host="0.0.0.0", debug=True)
+app.run()
