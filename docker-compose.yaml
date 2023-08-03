@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  taipei_trip:
+    platform: "linux/amd64"
+    image: chan0216/taipei_trip:v1.1.0
+    restart: unless-stopped
+    build:
+      context: "."
+    container_name: "taipei_trip"
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Taipei
+    ports:
+      - 2000:2000

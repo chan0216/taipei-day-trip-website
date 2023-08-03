@@ -117,6 +117,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
       if (location.href.split("/")[3] == "booking") {
         getSchedule(data["data"]);
       }
+    })
+    .catch((error) => {
+      document.querySelector(".signin").style.display = "block";
     });
 });
 
