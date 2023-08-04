@@ -1,10 +1,11 @@
-# Taipei Day Trip
+# 台北一日遊 Taipei Day Trip
 
-Trip website of Taipei attractions, users can search for attractions and choose their trip. 
+本專案為台北旅遊電商網站，主要功能如下： <br>1.瀏覽及搜尋台北相關景點資訊
+<br>2.預訂旅遊行程，可使用測試信用卡進行付款功能
 
 ## Demo
 
-Website URL : https://memorydev.com/
+Website URL : https://trip.chandev.cc/
 
 Test Account
 
@@ -16,55 +17,62 @@ Test Credit Card
 
 - Card number：4242 4242 4242 4242
 
-- Expiration date：0123
+- Expiration date：使用超過目前年月份的效期即可
 
 - CVV：123
 
 ## Technique
 
-- Python Flask for server framework.
-- Deploy a web server to AWS EC2/Linux.
-- Following RESTful API.
-- Payment gateway using TapPay SDK.
-- Registration and Login with JWT Authentication.
-- Create a responsive layout with CSS Grid.
-- Build Infinite Scroll, Image Carousel Using pure JavaScript.
-## Database Schema
-![taipei_dbtable](https://user-images.githubusercontent.com/94737861/185329561-ff10ac67-da96-459c-b19f-5ac8a72f70aa.png)
+#### Backend Service:
 
+- Python 3.11
+- Flask 2.3
+
+#### Payment System:
+
+- TapPay SDK
+
+#### Cloud Service:
+
+- AWS EC2
+
+#### DateBase:
+
+- AWS RDS MySQL
+
+#### Web Server:
+
+- Nginx
+
+#### Deployment:
+
+- Docker
+
+## Database Schema
+
+![taipei-trip](https://github.com/chan0216/taipei-day-trip-website/assets/94737861/4792646d-2693-4182-aa44-575ef1762e1a)
+
+## System Architecture
+
+<img width="742" alt="截圖 2023-08-04 下午2 11 43" src="https://github.com/chan0216/taipei-day-trip-website/assets/94737861/43dd4c78-01a7-4456-82af-328097f980ca">
 ## Introduction
 
 ### Lazy Loading & Infinite Scroll
 
-- Scroll down can view all attractions.
-
-![台北一日遊 homepage](https://user-images.githubusercontent.com/94737861/176992591-f8c62d60-94ae-495c-a7f3-57142ed6861d.gif)
-
+![taipei_home](https://github.com/chan0216/taipei-day-trip-website/assets/94737861/9d918aa7-4c0e-419a-9807-09c04b75e8ae)
 
 ### Keyword Search
 
-- users can enter keywords to search for attractions.
-
-![台北一日遊keyword](https://user-images.githubusercontent.com/94737861/176992720-f1e5dc93-7516-4d8c-9a3a-31d643174be8.gif)
-
+![search](https://github.com/chan0216/taipei-day-trip-website/assets/94737861/b6c6df63-b816-45f6-8934-05a98c482a04)
 
 ### Image Carousel
-- Users can explore the introduction of tourist attractions and related pictures.
 
-![image](https://user-images.githubusercontent.com/94737861/176994093-8f24323d-e94b-426b-b85a-f858b0b9f8e3.gif)
-
+![image](https://github.com/chan0216/taipei-day-trip-website/assets/94737861/d9b81dbc-3b8a-4548-b1b8-5a80d4fee3bd)
 
 ### Booking System
-- Payment gateway using TapPay SDK.
 
-<img src="https://user-images.githubusercontent.com/94737861/176994680-a9c46021-ffac-4d46-a7ce-d884127d47aa.gif" width="640" height="360" >
-
+![booking](https://github.com/chan0216/taipei-day-trip-website/assets/94737861/c1308821-ab9e-491a-a3a9-5ff97fb4cde9)
 
 ### RWD
-- Create a responsive layout with CSS Grid.
 
-<img src="https://user-images.githubusercontent.com/94737861/176995472-633fbe7e-d086-4824-850d-18d6f363f0ed.gif" width="640" height="360" >
-
-### Contact
-- 詹心怡 Chan,Hsin-Yi
-- Email : jessica88216@gmail.com
+![rwd](https://github.com/chan0216/taipei-day-trip-website/assets/94737861/9697cf28-37c9-472c-bdb7-1208fc4b193f)
