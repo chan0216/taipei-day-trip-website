@@ -49,12 +49,12 @@ Test Credit Card
 - Docker
 
 ## Database Schema
-
-![taipei-trip](https://github.com/chan0216/taipei-day-trip-website/assets/94737861/4792646d-2693-4182-aa44-575ef1762e1a)
+<img width="742" alt="截圖 2023-08-04 下午2 18 23" src="https://github.com/chan0216/taipei-day-trip-website/assets/94737861/7a0c4866-13b1-4204-9a47-d74a631c2045">
 
 ## System Architecture
 
 <img width="742" alt="截圖 2023-08-04 下午2 11 43" src="https://github.com/chan0216/taipei-day-trip-website/assets/94737861/43dd4c78-01a7-4456-82af-328097f980ca">
+
 ## Introduction
 
 ### Lazy Loading & Infinite Scroll
