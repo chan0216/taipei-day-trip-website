@@ -23,20 +23,20 @@ Test Credit Card
 
 ## Technique
 
-#### Backend Service:
+### Backend Service:
 
-- Python 3.11
-- Flask 2.3
+- Python
+- Flask
 
-#### Payment System:
+### Payment System:
 
 - TapPay SDK
 
-#### Cloud Service:
+### Cloud Service:
 
 - AWS EC2
 
-#### DateBase:
+### Database:
 
 - AWS RDS MySQL
 
@@ -55,21 +55,24 @@ Test Credit Card
 
 <img width="742" alt="截圖 2023-08-04 下午2 11 43" src="https://github.com/chan0216/taipei-day-trip-website/assets/94737861/43dd4c78-01a7-4456-82af-328097f980ca">
 
+## Nginx Configuration Files
+請查看 [nginx-configs](https://github.com/chan0216/nginx-configs)
+
 ## Introduction
 
-### Lazy Loading & Infinite Scroll
+### 懶載入 & 無限滾輪
 
 ![taipei_home](https://github.com/chan0216/taipei-day-trip-website/assets/94737861/9d918aa7-4c0e-419a-9807-09c04b75e8ae)
 
-### Keyword Search
+### 關鍵字搜尋
 
 ![search](https://github.com/chan0216/taipei-day-trip-website/assets/94737861/b6c6df63-b816-45f6-8934-05a98c482a04)
 
-### Image Carousel
+### 照片輪播
 
 ![image](https://github.com/chan0216/taipei-day-trip-website/assets/94737861/d9b81dbc-3b8a-4548-b1b8-5a80d4fee3bd)
 
-### Booking System
+### 預訂付款
 
 ![booking](https://github.com/chan0216/taipei-day-trip-website/assets/94737861/c1308821-ab9e-491a-a3a9-5ff97fb4cde9)
 
