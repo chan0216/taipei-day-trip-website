@@ -3,11 +3,6 @@
 本專案為台北旅遊電商網站，主要功能如下： <br>1.瀏覽及搜尋台北相關景點資訊
 <br>2.預訂旅遊行程，可使用測試信用卡進行付款功能
 
-## Demo
-
-Website URL : https://trip.chandev.cc/
-
-
 ## Technique
 
 ### Backend Service:
