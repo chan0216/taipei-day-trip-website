@@ -7,19 +7,6 @@
 
 Website URL : https://trip.chandev.cc/
 
-Test Account
-
-- Email：test@test.com
-
-- Password：test
-
-Test Credit Card
-
-- Card number：4242 4242 4242 4242
-
-- Expiration date：使用超過目前年月份的效期即可
-
-- CVV：123
 
 ## Technique
 
